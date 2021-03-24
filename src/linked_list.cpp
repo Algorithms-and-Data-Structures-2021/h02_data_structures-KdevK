@@ -87,11 +87,13 @@ Element LinkedList::Remove(int index) {
 void LinkedList::Clear() {
   // Tip 1: люди в черном (MIB) пришли стереть вам память
   // напишите свой код здесь ...
-  for (Node *node = head_; node != nullptr; node = node -> next) {
-      Node *temp = node;
-      temp = temp -> next;
-      delete temp;
+  Node* curr = head_;
+  for (int i = 0; i < size_; i++) {
+      Node *temp = curr -> next;
+      delete curr;
+      curr = temp;
   }
+  delete curr;
   head_ = nullptr;
   tail_ = nullptr;
   size_ = 0;
